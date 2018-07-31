@@ -4,7 +4,7 @@
 	<h1>{{ mensaje}}</h1>
 	<ul>
 		 {% for t in tareas %}
-        <li>{{ t.id }} - {{ t.descripcion}}</li>
+        <li><a href="{{ path ('tarea', {'id':t.id}) }}">{{ t.id }} - {{ t.descripcion}}</a></li>
     {% endfor %}
 	</ul>
 
