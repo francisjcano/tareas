@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}Tareas{% endblock %}
+{% block body %}
+	<h1>{{ mensaje}}</h1>
+	<ul>
+		 {% for t in tareas %}
+        <li>{{ t.id }} - {{ t.descripcion}}</li>
+    {% endfor %}
+	</ul>
+
+{% endblock %}

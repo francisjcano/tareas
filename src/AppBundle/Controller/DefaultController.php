@@ -10,12 +10,25 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Route("/tareas", name="tareas")
      */
-    public function indexAction(Request $request)
+    public function tareasAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Tarea');
+        $tareas = $repository->findAll();
+
+        return $this->render('default/pantalla_tareas.html.twig', array('tareas' => $tareas, 'mensaje'=> "hola") );
+    }
+
+    /**
+    * @Route("/tarea/{id}", name="tarea", requirements={"id"="\d+"})
+     */
+    public function tareaAction($id)
+    {
+      
+        $repository = $this->getDoctrine()->getRepository('AppBundle:Tarea');
+        $tarea =  $repository->findOneById($id);
+
+        return $this->render('default/tarea_unica.html.twig' , array('tarea' => $tarea) );
     }
 }
