@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tarea
  *
  * @ORM\Table(name="tarea", uniqueConstraints={@ORM\UniqueConstraint(name="descripcion", columns={"descripcion"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TareaRepository")
  */
 class Tarea
 {
